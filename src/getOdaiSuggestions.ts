@@ -1,7 +1,9 @@
 import OpenAI from "openai"
 import { createPrompt } from "./createPrompt"
 
-const openai = new OpenAI()
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+})
 
 export async function getOdaiSuggestions(keyword: string): Promise<string[]> {
   const prompt = createPrompt(keyword)
