@@ -9,7 +9,7 @@ export async function getOdaiSuggestions(keyword: string): Promise<string[]> {
   const prompt = createPrompt(keyword)
   const chatCompletion = await openai.chat.completions.create({
     messages: [{ role: "user", content: prompt }],
-    model: "gpt-3.5-turbo",
+    model: "gpt-3.5-turbo-0125",
   })
 
   if (!chatCompletion.choices[0].message.content) {
