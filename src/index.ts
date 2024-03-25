@@ -11,6 +11,10 @@ fastify.get<{
     keyword: string
   }
 }>("/", async (request, reply) => {
+  if (!request.query.keyword) {
+    reply.code(400)
+    return { message: "keyword is required" }
+  }
   const odaiSuggestions = await getOdaiSuggestions(request.query.keyword)
   reply.send(odaiSuggestions)
 })
