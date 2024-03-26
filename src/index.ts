@@ -1,6 +1,8 @@
 import Fastify from "fastify"
 import { getOdaiSuggestions } from "./getOdaiSuggestions"
 
+const port = process.env.PORT ? Number(process.env.PORT) : 3001
+
 const fastify = Fastify({
   logger: true,
 })
@@ -20,7 +22,7 @@ fastify.get<{
 })
 
 // Run the server!
-fastify.listen({ port: 10000 }, (err, address) => {
+fastify.listen({ port }, (err, address) => {
   if (err) {
     fastify.log.error(err)
     process.exit(1)
